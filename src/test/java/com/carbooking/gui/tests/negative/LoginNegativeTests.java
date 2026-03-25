@@ -9,7 +9,7 @@ public class LoginNegativeTests extends TestBase {
     @Test(priority = 1)
     public void loginWithInvalidPassword() throws InterruptedException {
         app.driver.get("http://localhost:5173/login");
-        // Используем твой реальный email, но заведомо ложный пароль
+        
         loginPage.login("tester1774119303709@gmail.com", "WrongPassword123!");
 
         Thread.sleep(2000);
