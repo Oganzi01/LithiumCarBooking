@@ -2,7 +2,7 @@ package com.carbooking.gui.core;
 
 import com.carbooking.gui.fw.ApplicationManager;
 import com.carbooking.gui.pages.LoginPage;
-import com.carbooking.gui.pages.HomePage; // Добавь это!
+import com.carbooking.gui.pages.HomePage; 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
