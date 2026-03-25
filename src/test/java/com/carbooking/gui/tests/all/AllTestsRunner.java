@@ -1,6 +1,6 @@
 package com.carbooking.gui.tests.all;
 
-import com.carbooking.gui.tests.SecurityTests; // Тот самый импорт, чтобы не было красным
+import com.carbooking.gui.tests.SecurityTests; 
 import com.carbooking.gui.tests.positive.LoginPositiveTests;
 import com.carbooking.gui.tests.positive.BookingPositiveTests;
 import com.carbooking.gui.tests.positive.RegistrationPositiveTests;
@@ -21,7 +21,7 @@ public class AllTestsRunner {
                 RegistrationPositiveTests.class,
                 LoginNegativeTests.class,
                 BookingNegativeTests.class,
-                SecurityTests.class, // Добавили новый класс в запуск
+                SecurityTests.class,
                 FullWorkflowTest.class
         });
         testng.run();
