@@ -2,32 +2,29 @@ package com.carbooking.gui.tests.positive;
 
 import com.carbooking.gui.core.TestBase;
 import com.carbooking.gui.pages.BookingPage;
+import com.carbooking.gui.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class BookingPositiveTests extends TestBase {
 
     @Test
-    public void testCarBookingSuccess() throws InterruptedException {
+    public void testCarBookingSuccess() {
+        // Переходим на логин
         app.driver.get("http://localhost:5173/login");
+        LoginPage loginPage = new LoginPage(app.driver);
+
+        // ВАЖНО: Убедиться, что этот пользователь существует в базе!
         loginPage.login("tester1774119303709@gmail.com", "GanzQA2026!");
 
+        // Переход на главную для бронирования
         app.driver.get("http://localhost:5173/");
         BookingPage bPage = new BookingPage(app.driver);
 
-        // Вводим даты
+        // Заполнение данных
         bPage.fillDatesAndSearch("28032026", "30032026");
-        Thread.sleep(3000); // Ждем обновления списка машин
-
         bPage.clickFirstAvailableCar();
-        Thread.sleep(2000);
 
-        // Если упадет - сделаем скриншот, чтобы увидеть, что на экране
-        if (!bPage.isBookingSuccessful()) {
-            app.takeScreenshot();
-        }
-
-        Assert.assertTrue(bPage.isBookingSuccessful(),
-                "ОШИБКА: Бронирование не подтверждено. Скриншот сделан.");
+        Assert.assertTrue(bPage.isBookingSuccessful(), "Бронирование не завершено!");
     }
 }

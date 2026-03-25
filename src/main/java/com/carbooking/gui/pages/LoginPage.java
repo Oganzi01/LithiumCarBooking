@@ -1,39 +1,32 @@
 package com.carbooking.gui.pages;
 
-import com.carbooking.gui.core.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends BasePage {
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
+public class LoginPage {
+    private WebDriver driver;
 
     @FindBy(name = "email")
-    private WebElement emailInput;
+    private WebElement emailField;
 
     @FindBy(name = "password")
-    private WebElement passwordInput;
+    private WebElement passwordField;
 
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement loginButton;
 
-    @FindBy(xpath = "//*[contains(@class, 'error')]")
-    private WebElement errorMessage;
-
-    public void login(String email, String password) {
-        emailInput.sendKeys(email);
-        passwordInput.sendKeys(password);
-        loginButton.click();
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public boolean isErrorMessagePresent() {
-        try {
-            return errorMessage.isDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
+    public void login(String email, String password) {
+        emailField.clear();
+        emailField.sendKeys(email);
+        passwordField.clear();
+        passwordField.sendKeys(password);
+        loginButton.click();
     }
 }

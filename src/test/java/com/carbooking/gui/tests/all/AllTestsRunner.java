@@ -14,7 +14,7 @@ public class AllTestsRunner {
     @Test
     public void runEverything() {
         TestNG testng = new TestNG();
-        // Добавляем сюда все твои классы тестов
+        // Добавляем сюда все классы тестов
         testng.setTestClasses(new Class[] {
                 LoginPositiveTests.class,
                 BookingPositiveTests.class,
